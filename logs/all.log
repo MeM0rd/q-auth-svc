@@ -1,0 +1,13 @@
+[36mINFO[0m[2023-11-04T19:58:24+03:00]main.go:24 main.main() server listening at [::]:38407               
+[31mFATA[0m[2023-11-04T20:10:37+03:00]main.go:23 main.main() failed to listen: listen tcp: address 8090: missing port in address 
+[36mINFO[0m[2023-11-04T20:11:32+03:00]main.go:29 main.main() server listening at [::]:8090                
+[36mINFO[0m[2023-11-05T21:19:11+03:00]main.go:29 main.main() server listening at [::]:8090                
+[36mINFO[0m[2023-11-05T22:06:07+03:00]main.go:27 main.main() server listening at [::]:8090                
+[36mINFO[0m[2023-11-05T22:06:46+03:00]main.go:27 main.main() server listening at [::]:8090                
+[36mINFO[0m[2023-11-06T00:02:39+03:00]main.go:28 main.main() server listening at [::]:8090                
+[36mINFO[0m[2023-11-06T00:46:02+03:00]main.go:29 main.main() server listening at [::]:8090                
+[36mINFO[0m[2023-11-06T00:49:05+03:00]main.go:28 main.main() server listening at [::]:8090                
+[36mINFO[0m[2023-11-06T03:58:36+03:00]main.go:28 main.main() server listening at [::]:8090                
+[36mINFO[0m[2023-11-06T04:26:12+03:00]main.go:28 main.main() server listening at [::]:8090                
+[36mINFO[0m[2023-11-06T04:26:17+03:00]auth.go:22 github.com/MeM0rd/q-auth-svc/internal/auth.(*Server).Register() im in register func                          
+[36mINFO[0m[2023-11-06T04:27:30+03:00]main.go:28 main.main() server listening at [::]:8090                

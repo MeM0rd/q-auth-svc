@@ -1,2 +1,4 @@
 server:
-	go run cmd/main.go
+	go run cmd/q-auth-svc/main.go
+mod:
+	go mod tidy
