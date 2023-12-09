@@ -16,7 +16,7 @@ func CreateSession(userId *int) (Session, error) {
 	sessionToken := uuid.NewString()
 	expiredAt := time.Now().Add(5 * time.Hour)
 
-	q := `INSERT INTO sessions(user_id, token, expired_at) VALUES ($1, $2, $3) RETURNING id, token, user_id expired_at`
+	q := `INSERT INTO sessions(user_id, token, expired_at) VALUES ($1, $2, $3) RETURNING id, token, user_id, expired_at`
 
 	err = postgres.DB.QueryRow(q, userId, sessionToken, expiredAt).Scan(&session.Id, &session.Token, &session.UserId, &session.ExpiredAt)
 	if err != nil {

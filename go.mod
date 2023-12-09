@@ -4,6 +4,7 @@ go 1.20
 
 require (
 	github.com/MeM0rd/q-api-gateway v0.0.0-20231104162804-026016ca2284
+	github.com/google/uuid v1.3.1
 	github.com/joho/godotenv v1.5.1
 	github.com/lib/pq v1.10.9
 	github.com/sirupsen/logrus v1.9.3

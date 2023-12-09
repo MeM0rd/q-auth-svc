@@ -18,7 +18,7 @@ import (
 
 type Server struct {
 	authPbService.UnimplementedAuthPbServiceServer
-	logger logger.Logger
+	Logger *logger.Logger
 }
 
 func (s *Server) Register(ctx context.Context, in *authPbService.RegisterRequest) (*authPbService.RegisterResponse, error) {
@@ -105,11 +105,13 @@ func (s *Server) Login(ctx context.Context, in *authPbService.LoginRequest) (*au
 	err := postgres.DB.QueryRow(q, ld.Email).Scan(&user.Id, &user.Email, &user.Password)
 	switch {
 	case errors.Is(err, sql.ErrNoRows):
+		s.Logger.Infof("%v", err)
 		return &authPbService.LoginResponse{
 			Msg: "",
 			Err: fmt.Sprintf("Error queryRow creating user: %v", err),
 		}, err
 	case err != nil:
+		s.Logger.Infof("error query: %v", err)
 		return &authPbService.LoginResponse{
 			Msg: "",
 			Err: fmt.Sprintf("Error queryRow creating user: %v", err),
@@ -118,6 +120,7 @@ func (s *Server) Login(ctx context.Context, in *authPbService.LoginRequest) (*au
 
 	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(ld.Password))
 	if err != nil {
+		s.Logger.Infof("error compare hash an password: %v", err)
 		return &authPbService.LoginResponse{
 			Msg: "",
 			Err: fmt.Sprintf("error compare hash an password: %v", err),
@@ -126,6 +129,7 @@ func (s *Server) Login(ctx context.Context, in *authPbService.LoginRequest) (*au
 
 	session, err := sessions.CreateSession(&user.Id)
 	if err != nil {
+		s.Logger.Infof("error creating session: %v", err)
 		return &authPbService.LoginResponse{
 			Msg: "",
 			Err: fmt.Sprintf("error generate session: %v", err),
