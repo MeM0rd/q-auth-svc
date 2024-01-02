@@ -88,6 +88,7 @@ func (s *Server) Register(ctx context.Context, in *authPbService.RegisterRequest
 	return &authPbService.RegisterResponse{
 		Status: "success",
 		Msg:    j,
+		Email:  user.Email,
 		Err:    "",
 	}, nil
 }
